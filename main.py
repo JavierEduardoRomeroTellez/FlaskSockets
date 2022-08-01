@@ -24,11 +24,11 @@ def buttonPressed1():
     if led_state1 == False:
         print("Encender led")
         led_state1 = True
-        socketio.emit('True1')
+        socketio.emit('message','True1')
     else:
         print("Apagar led")
         led_state1 = False
-        socketio.emit('False1')
+        socketio.emit('message','False1')
     print(led_state1)
 
 button1.when_pressed = buttonPressed1
