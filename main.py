@@ -23,10 +23,10 @@ def buttonPressed1():
     global led_state1
     if led_state1:
         print("Encender led")
-        socketio.emit('Button1On')
+        #socketio.emit('Button1On')
     else:
         print("Apagar led")
-        socketio.emit('Button1Off')
+        #socketio.emit('Button1Off')
 
 button1.when_pressed = buttonPressed1
 
