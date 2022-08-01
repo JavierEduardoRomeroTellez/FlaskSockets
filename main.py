@@ -21,9 +21,15 @@ socketio = SocketIO(app)
 
 def buttonPressed1():
     if led_state1:
-        turnOffLed1()
+        print("Apagar led")
+        led1.off()
+        led_state1 = False
+        send('False1', broadcast = True)
     else:
-        turnOnLed1()
+        print("Encender led")
+        led1.on()
+        led_state1 = True
+        send('True1', broadcast = True)
 
 button1.when_pressed = buttonPressed1
 
