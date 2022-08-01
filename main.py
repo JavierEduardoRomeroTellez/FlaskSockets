@@ -10,9 +10,9 @@ led_state2 = False
 led3 = LED(24)
 led_state3 = False
 
-button1 = BUTTON(22)
-button2 = BUTTON(27)
-button3 = BUTTON(17)
+button1 = Button(22)
+button2 = Button(27)
+button3 = Button(17)
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'secret'
