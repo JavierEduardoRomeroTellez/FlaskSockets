@@ -20,6 +20,8 @@ app.config['SECRET_KEY'] = 'secret'
 socketio = SocketIO(app)
 
 def buttonPressed1():
+    global led1
+    global led_state1
     if led_state1:
         print("Apagar led")
         led1.off()
