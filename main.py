@@ -41,6 +41,7 @@ def index():
 
 @socketio.on('turnOnLed1')
 def turnOnLED():
+    global led_state1
     print("Encender led")
     led1.on()
     led_state1 = True
@@ -48,6 +49,7 @@ def turnOnLED():
 
 @socketio.on('turnOffLed1')
 def turnOffLED():
+    global led_state1
     print("Apagar led")
     led1.off()
     led_state1 = False
