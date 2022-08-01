@@ -1,7 +1,7 @@
 from flask import Flask, render_template
 from flask_socketio import SocketIO, send
 from gpiozero import LED
-from gpiozero import BUTTON
+from gpiozero import Button
 
 led1 = LED(18)
 led_state1 = False
