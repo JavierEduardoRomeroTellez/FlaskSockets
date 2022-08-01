@@ -2,8 +2,8 @@ from flask import Flask, render_template
 from flask_socketio import SocketIO, send
 from gpiozero import LED
 
-led = LED(18)
-led_state = False
+led1 = LED(18)
+led_state1 = False
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'secret'
@@ -14,18 +14,18 @@ socketio = SocketIO(app)
 def index():
    return render_template('index.html')
 
-@socketio.on('turnOn')
+@socketio.on('turnOnLed1')
 def turnOnLED():
     print("Encender led")
-    led.on()
-    led_state = True
+    led1.on()
+    led_state1 = True
     send('True', broadcast = True)
 
-@socketio.on('turnOff')
+@socketio.on('turnOffLed1')
 def turnOffLED():
     print("Apagar led")
-    led.off()
-    led_state = False
+    led1.off()
+    led_state1 = False
     send('False', broadcast = True)
 
 if __name__ == '__main__':

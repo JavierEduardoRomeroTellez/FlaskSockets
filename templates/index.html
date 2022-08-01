@@ -70,8 +70,19 @@
 	</head>
 	<body>
 		<h1>Python & socketio</h1>
+		<p>Led 1</p>
 		<label class="switch">
-			<input type="checkbox" id="Checkbox">
+			<input type="checkbox" id="Checkbox1">
+			<span class="slider round"></span>
+		</label>
+		<p>Led 2</p>
+		<label class="switch">
+			<input type="checkbox" id="Checkbox2">
+			<span class="slider round"></span>
+		</label>
+		<p>Led 3</p>
+		<label class="switch">
+			<input type="checkbox" id="Checkbox3">
 			<span class="slider round"></span>
 		</label>
 		<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
@@ -83,21 +94,21 @@
 
 			socket.on('message',function (msg) {
 				if(msg == 'True'){
-					$("#Checkbox").prop("checked", true);
+					$("#Checkbox1").prop("checked", true);
 					console.log("Encendio el led");
 				}else{
-					$("#Checkbox").prop("checked", false);	
+					$("#Checkbox1").prop("checked", false);	
 					console.log("Apago el led");
 				}
 			});
 			//jQuery listen for checkbox change
-			$("#Checkbox").change(function() {
+			$("#Checkbox1").change(function() {
 					if(this.checked) {
 							console.log('cambio el checkbox')
-							socket.emit('turnOn')
+							socket.emit('turnOnLed1')
 					}else{
 							console.log('cambio el checkbox')
-							socket.emit('turnOff')
+							socket.emit('turnOffLed1')
 					}
 			});
 		</script>
