@@ -22,6 +22,7 @@ socketio = SocketIO(app)
 def buttonPressed1():
     global led1
     global led_state1
+    global socketio
     if led_state1:
         print("Apagar led")
         led1.off()
