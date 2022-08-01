@@ -21,7 +21,7 @@ socketio = SocketIO(app)
 
 def buttonPressed1():
     global led_state1
-    if led_state1:
+    if led_state1 == False:
         print("Encender led")
         led_state1 = True
         #socketio.emit('Button1On')
