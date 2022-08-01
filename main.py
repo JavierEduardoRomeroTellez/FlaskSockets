@@ -31,9 +31,38 @@ def buttonPressed1():
         led1.off()
         led_state1 = False
         socketio.emit('message','False1')
-    print(led_state1)
 
 button1.when_pressed = buttonPressed1
+
+def buttonPressed2():
+    global led_state2
+    if led_state2 == False:
+        print("Encender led")
+        led2.on()
+        led_state2 = True
+        socketio.emit('message','True2')
+    else:
+        print("Apagar led")
+        led2.off()
+        led_state2 = False
+        socketio.emit('message','False2')
+
+button2.when_pressed = buttonPressed2
+
+def buttonPressed3():
+    global led_state3
+    if led_state3 == False:
+        print("Encender led")
+        led3.on()
+        led_state3 = True
+        socketio.emit('message','True3')
+    else:
+        print("Apagar led")
+        led3.off()
+        led_state3 = False
+        socketio.emit('message','False3')
+
+button3.when_pressed = buttonPressed3
 
 @app.route('/')
 def index():
@@ -57,6 +86,7 @@ def turnOffLED():
 
 @socketio.on('turnOnLed2')
 def turnOnLED():
+    global led_state2
     print("Encender led")
     led2.on()
     led_state2 = True
@@ -64,6 +94,7 @@ def turnOnLED():
 
 @socketio.on('turnOffLed2')
 def turnOffLED():
+    global led_state2
     print("Apagar led")
     led2.off()
     led_state2 = False
@@ -71,6 +102,7 @@ def turnOffLED():
 
 @socketio.on('turnOnLed3')
 def turnOnLED():
+    global led_state3
     print("Encender led")
     led3.on()
     led_state3 = True
@@ -78,6 +110,7 @@ def turnOnLED():
 
 @socketio.on('turnOffLed3')
 def turnOffLED():
+    global led_state3
     print("Apagar led")
     led3.off()
     led_state3 = False
