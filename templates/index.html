@@ -111,7 +111,12 @@
 				}else if (msg == 'False3'){
 					$("#Checkbox3").prop("checked", false);	
 					console.log("Apago el led");
+				}else if (msg == 'Button1On'){
+					socket.emit('turnOnLed1')
+				}else if (msg == 'Button1Off'){
+					socket.emit('turnOffLed1')
 				}
+
 			});
 			//jQuery listen for checkbox change
 			$("#Checkbox1").change(function() {
