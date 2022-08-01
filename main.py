@@ -20,19 +20,13 @@ app.config['SECRET_KEY'] = 'secret'
 socketio = SocketIO(app)
 
 def buttonPressed1():
-    global led1
     global led_state1
-    global socketio
     if led_state1:
         print("Encender led")
-        led1.on()
-        led_state1 = True
-        socketio.emit('True1')
+        socketio.emit('Button1On')
     else:
         print("Apagar led")
-        led1.off()
-        led_state1 = False
-        socketio.emit('False1')
+        socketio.emit('Button1Off')
 
 button1.when_pressed = buttonPressed1
 
