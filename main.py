@@ -23,42 +23,42 @@ def turnOnLED():
     print("Encender led")
     led1.on()
     led_state1 = True
-    send('True', broadcast = True)
+    send('True1', broadcast = True)
 
 @socketio.on('turnOffLed1')
 def turnOffLED():
     print("Apagar led")
     led1.off()
     led_state1 = False
-    send('False', broadcast = True)
+    send('False1', broadcast = True)
 
 @socketio.on('turnOnLed2')
 def turnOnLED():
     print("Encender led")
     led2.on()
     led_state2 = True
-    send('True', broadcast = True)
+    send('True2', broadcast = True)
 
 @socketio.on('turnOffLed2')
 def turnOffLED():
     print("Apagar led")
     led2.off()
     led_state2 = False
-    send('False', broadcast = True)
+    send('False2', broadcast = True)
 
 @socketio.on('turnOnLed3')
 def turnOnLED():
     print("Encender led")
     led3.on()
     led_state3 = True
-    send('True', broadcast = True)
+    send('True3', broadcast = True)
 
 @socketio.on('turnOffLed3')
 def turnOffLED():
     print("Apagar led")
     led3.off()
     led_state3 = False
-    send('False', broadcast = True)
+    send('False3', broadcast = True)
 
 if __name__ == '__main__':
     socketio.run(app, host='0.0.0.0', port=5000)

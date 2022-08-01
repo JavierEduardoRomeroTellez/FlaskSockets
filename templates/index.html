@@ -93,11 +93,23 @@
 			//socket.emit('message', 'hello');
 
 			socket.on('message',function (msg) {
-				if(msg == 'True'){
+				if(msg == 'True1'){
 					$("#Checkbox1").prop("checked", true);
 					console.log("Encendio el led");
-				}else{
+				}else if (msg == 'False1'){
 					$("#Checkbox1").prop("checked", false);	
+					console.log("Apago el led");
+				}else if (msg == 'True2'){
+					$("#Checkbox2").prop("checked", true);	
+					console.log("Encendio el led");
+				}else if (msg == 'False2'){
+					$("#Checkbox2").prop("checked", false);	
+					console.log("Apago el led");
+				}else if (msg == 'True3'){
+					$("#Checkbox3").prop("checked", true);	
+					console.log("Encendio el led");
+				}else if (msg == 'False3'){
+					$("#Checkbox3").prop("checked", false);	
 					console.log("Apago el led");
 				}
 			});
@@ -109,6 +121,26 @@
 					}else{
 							console.log('cambio el checkbox')
 							socket.emit('turnOffLed1')
+					}
+			});
+
+			$("#Checkbox2").change(function() {
+					if(this.checked) {
+							console.log('cambio el checkbox')
+							socket.emit('turnOnLed2')
+					}else{
+							console.log('cambio el checkbox')
+							socket.emit('turnOffLed2')
+					}
+			});
+
+			$("#Checkbox3").change(function() {
+					if(this.checked) {
+							console.log('cambio el checkbox')
+							socket.emit('turnOnLed3')
+					}else{
+							console.log('cambio el checkbox')
+							socket.emit('turnOffLed3')
 					}
 			});
 		</script>
