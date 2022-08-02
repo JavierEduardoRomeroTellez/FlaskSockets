@@ -19,6 +19,10 @@
 				height: 0;
 			}
 
+			.container{
+				display: flex;
+			}
+
 			/* The slider */
 			.slider {
 				position: absolute;
@@ -70,21 +74,31 @@
 	</head>
 	<body>
 		<h1>Python & socketio</h1>
-		<p>Led 1</p>
-		<label class="switch">
-			<input type="checkbox" id="Checkbox1">
-			<span class="slider round"></span>
-		</label>
-		<p>Led 2</p>
-		<label class="switch">
-			<input type="checkbox" id="Checkbox2">
-			<span class="slider round"></span>
-		</label>
-		<p>Led 3</p>
-		<label class="switch">
-			<input type="checkbox" id="Checkbox3">
-			<span class="slider round"></span>
-		</label>
+		<div class='container'>
+			<div class='boton1'>
+				<p>Led 1</p>
+				<label class="switch">
+					<input type="checkbox" id="Checkbox1">
+					<span class="slider round"></span>
+				</label>
+			</div>
+			<div class='boton2'>
+				<p>Led 2</p>
+				<label class="switch">
+					<input type="checkbox" id="Checkbox2">
+					<span class="slider round"></span>
+				</label>
+			</div>
+			<div class='boton3'>
+				<p>Led 3</p>
+				<label class="switch">
+					<input type="checkbox" id="Checkbox3">
+					<span class="slider round"></span>
+				</label>
+			</div>
+		</div>
+		<input type="text" id="Message">
+		<button type="button" id="send">Send</button>
 		<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.5.1/socket.io.js" charset="utf-8"></script>
 		<script>
