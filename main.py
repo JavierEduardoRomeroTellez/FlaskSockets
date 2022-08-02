@@ -123,6 +123,7 @@ def handleMessage(msg):
     global led_state2
     global led_state3
     if msg == 'parpadear':
+        send('OK', broadcast = True)
         led1.off()
         led2.off()
         led3.off()
@@ -145,7 +146,6 @@ def handleMessage(msg):
         if led_state3:
             led3.on()
 
-        send('OK', broadcast = True)
 
 if __name__ == '__main__':
     socketio.run(app, host='0.0.0.0', port=5000)
