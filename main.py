@@ -2,6 +2,7 @@ from flask import Flask, render_template
 from flask_socketio import SocketIO, send
 from gpiozero import LED
 from gpiozero import Button
+import time
 
 led1 = LED(18)
 led_state1 = False
@@ -115,6 +116,34 @@ def turnOffLED():
     led3.off()
     led_state3 = False
     send('False3', broadcast = True)
+
+@socketio.on('message')
+def handleMessage(msg):
+    global led_state1
+    global led_state2
+    global led_state3
+    if msg == 'parpadear':
+        led1.off()
+        led2.off()
+        led3.off()
+        time.sleep(1)
+        for x in range(5):
+            led1.on()
+            time.sleep(.1)
+            led1.off()
+            led2.on()
+            time.sleep(.1)
+            led2.off()
+            led3.on()
+            time.sleep(.1)
+            led3.off()
+
+        if led_state1:
+            led1.on()
+        if led_state2:
+            led2.on()
+        if led_state3:
+            led3.on()
 
 if __name__ == '__main__':
     socketio.run(app, host='0.0.0.0', port=5000)

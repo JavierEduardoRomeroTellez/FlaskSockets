@@ -166,6 +166,11 @@
 							socket.emit('turnOffLed3')
 					}
 			});
+
+			$('#send').on('click', function (){
+				socket.send($('#Message').val());
+				$('#Message').val('');
+			});
 		</script>
 	</body>
 </html>
