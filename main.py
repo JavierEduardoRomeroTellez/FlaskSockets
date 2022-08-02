@@ -145,6 +145,8 @@ def handleMessage(msg):
         if led_state3:
             led3.on()
 
+        send('OK', broadcast = True)
+
 if __name__ == '__main__':
     socketio.run(app, host='0.0.0.0', port=5000)
     print(led_state1)
