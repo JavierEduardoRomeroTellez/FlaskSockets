@@ -1,2 +1,3 @@
 # FlaskSockets
-Working with Flask socketio on a raspberry pi 4
+
+In this project i worked with an Flask application that connect a client to a server, to control a raspberry pi through the GPIO pins
