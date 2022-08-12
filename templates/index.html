@@ -2,14 +2,34 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>Socketio & Python</title>
+		<title>RelRed Totem</title>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 		<style type="text/css">
 			/* The switch - the box around the slider */
+
+			body {
+				background-color: #f7f7f7;
+			}
+
+			img {
+				display: block;
+				margin-left: auto;
+				margin-right: auto;
+				width: 30vw;
+			}
+
+			.container {
+				margin: auto;
+				width: 50%;
+				padding: 10px;
+				text-align: center;
+			}
+
 			.switch {
 				position: relative;
 				display: inline-block;
-				width: 60px;
-				height: 34px;
+				width: 25vw;
+				height: 5vh;
 			}
 
 			/* Hide default HTML checkbox */
@@ -19,12 +39,8 @@
 				height: 0;
 			}
 
-			.container{
-				display: flex;
-			}
-
 			.boton{
-				margin: 5px;
+				margin: 7.5vh;
 			}
 
 			/* The slider */
@@ -43,10 +59,9 @@
 			.slider:before {
 				position: absolute;
 				content: "";
-				height: 26px;
-				width: 26px;
-				left: 4px;
-				bottom: 4px;
+				height: 5vh;
+				width: 5vh;
+				left: 1vh;
 				background-color: white;
 				-webkit-transition: .4s;
 				transition: .4s;
@@ -61,51 +76,89 @@
 			}
 
 			input:checked + .slider:before {
-				-webkit-transform: translateX(26px);
-				-ms-transform: translateX(26px);
-				transform: translateX(26px);
+				-webkit-transform: translateX(calc(25vw - 7.5vh));
+				-ms-transform: translateX(calc(25vw - 7.5vh));
+				transform: translateX(calc(25vw - 7.5vh));
 			}
 
 			/* Rounded sliders */
 			.slider.round {
-				border-radius: 34px;
+				border-radius: 15vh;
 			}
 
 			.slider.round:before {
 				border-radius: 50%;
 			}
+
+			i {
+				font-size: 5rem;
+				color: red;
+			}
+
+			.btn {
+				position: fixed;
+     			bottom: 0;
+     			right: 0;
+				background-color: f7f7f7;
+				border: none;
+				margin: 3%
+			}
+
+			.btn:hover i {
+				color: rgb(101, 0, 0);
+			}
 		</style>
 	</head>
 	<body>
-		<h1>Python & socketio</h1>
+		<img src="../RelRedLogo.jpeg" id="imagen" alt="Logo" width="500vw" >
 		<div class='container'>
 			<div class='boton'>
-				<p>Led 1</p>
 				<label class="switch">
 					<input type="checkbox" id="Checkbox1">
 					<span class="slider round"></span>
 				</label>
 			</div>
 			<div class='boton'>
-				<p>Led 2</p>
 				<label class="switch">
 					<input type="checkbox" id="Checkbox2">
 					<span class="slider round"></span>
 				</label>
 			</div>
 			<div class='boton'>
-				<p>Led 3</p>
 				<label class="switch">
 					<input type="checkbox" id="Checkbox3">
 					<span class="slider round"></span>
 				</label>
 			</div>
+			<input type="text" id="Message">
+			<button type="button" id="send">Send</button>
 		</div>
-		<input type="text" id="Message">
-		<button type="button" id="send">Send</button>
+		<button class="btn"><i class="fa-solid fa-power-off"></i></button>
 		<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.5.1/socket.io.js" charset="utf-8"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js" integrity="sha512-VEBjfxWUOyzl0bAwh4gdLEaQyDYPvLrZql3pw1ifgb6fhEvZl9iDDehwHZ+dsMzA0Jfww8Xt7COSZuJ/slxc4Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 		<script>
+
+			let tl = gsap.timeline({repeat: 0});
+
+			tl.from('#imagen',{
+				duration: 1,
+			});
+
+
+			tl.from('#imagen',{
+				duration: 1.5,
+				y: '40vh',
+				ease: "sine"
+			});
+
+			tl.from('.container, .btn', {
+				duration: 1,
+				opacity: 0
+			})
+
+
+
 			const socket = io();
 
 			//socket.emit('message', 'hello');
