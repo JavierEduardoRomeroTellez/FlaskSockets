@@ -3,6 +3,7 @@ from flask_socketio import SocketIO, send
 from gpiozero import LED
 from gpiozero import Button
 import time
+import os
 
 led1 = LED(18)
 led_state1 = False
@@ -19,6 +20,9 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = 'secret'
 
 socketio = SocketIO(app)
+
+def shutdown():
+    os.system("sudo shutdown -h now")
 
 def buttonPressed1():
     global led_state1
@@ -116,6 +120,10 @@ def turnOffLED():
     led3.off()
     led_state3 = False
     send('False3', broadcast = True)
+
+@socketio.on('shutdown')
+def shutdownButton():
+    shutdown()
 
 @socketio.on('message')
 def handleMessage(msg):

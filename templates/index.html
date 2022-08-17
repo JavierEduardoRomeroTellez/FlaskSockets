@@ -110,7 +110,7 @@
 		</style>
 	</head>
 	<body>
-		<img src="../RelRedLogo.jpeg" id="imagen" alt="Logo" width="500vw" >
+		<img src="/home/pi/FlaskSockets/templates/RelRedLogo.jpeg" id="imagen" alt="Logo" width="500vw" >
 		<div class='container'>
 			<div class='boton'>
 				<label class="switch">
@@ -133,7 +133,7 @@
 			<input type="text" id="Message">
 			<button type="button" id="send">Send</button>
 		</div>
-		<button class="btn"><i class="fa-solid fa-power-off"></i></button>
+		<button class="btn" id="turnoff"><i class="fa-solid fa-power-off"></i></button>
 		<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.5.1/socket.io.js" charset="utf-8"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js" integrity="sha512-VEBjfxWUOyzl0bAwh4gdLEaQyDYPvLrZql3pw1ifgb6fhEvZl9iDDehwHZ+dsMzA0Jfww8Xt7COSZuJ/slxc4Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -225,6 +225,10 @@
 			$('#send').on('click', function (){
 				socket.send($('#Message').val());
 				$('#Message').val('');
+			});
+
+			$('#turnoff').on('click', function (){
+				socket.emit('shutdown');
 			});
 		</script>
 	</body>
